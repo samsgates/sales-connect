@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: sales-connect }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: sales-connect } }
+  template:
+    metadata: { labels: { app: sales-connect } }
+    spec:
+      containers:
+        - name: server
+          image: ghcr.io/your-org/sales-connect:latest
+          ports: [{ containerPort: 4380 }]
+          envFrom: [{ secretRef: { name: sales-connect-secrets } }]
+          readinessProbe: { httpGet: { path: /ready, port: 4380 }, initialDelaySeconds: 5, periodSeconds: 10 }
+          livenessProbe: { httpGet: { path: /health, port: 4380 }, initialDelaySeconds: 10, periodSeconds: 20 }
+          resources:
+            requests: { cpu: 250m, memory: 256Mi }
+            limits: { cpu: "2", memory: 1Gi }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: sales-connect }
+spec:
+  selector: { app: sales-connect }
+  ports: [{ port: 4380, targetPort: 4380 }]

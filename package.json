@@ -1,0 +1,26 @@
+{
+  "name": "sales-connect",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Open-source bidirectional CRM synchronization framework for Salesforce, HubSpot and Zoho CRM",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @sales-connect/types && npm run build -w @sales-connect/core && npm run build -w @sales-connect/provider-common && npm run build -w @sales-connect/storage-postgres && npm run build -w @sales-connect/queue-postgres && npm run build -w @sales-connect/provider-salesforce && npm run build -w @sales-connect/provider-hubspot && npm run build -w @sales-connect/provider-zoho && npm run build -w @sales-connect/testkit && npm run build -w @sales-connect/sdk && npm run build -w @sales-connect/cli && npm run build -w @sales-connect/server && npm run build -w @sales-connect/dashboard && npm run build -w @sales-connect/demo-nextjs",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test -w @sales-connect/core",
+    "dev:server": "npm run dev -w @sales-connect/server",
+    "dev:dashboard": "npm run dev -w @sales-connect/dashboard",
+    "dev:demo": "npm run dev -w @sales-connect/demo-nextjs",
+    "db:migrate": "npm run migrate -w @sales-connect/storage-postgres",
+    "lint": "npm run lint --workspaces --if-present",
+    "build:server": "npm run build -w @sales-connect/types && npm run build -w @sales-connect/core && npm run build -w @sales-connect/provider-common && npm run build -w @sales-connect/storage-postgres && npm run build -w @sales-connect/queue-postgres && npm run build -w @sales-connect/provider-salesforce && npm run build -w @sales-connect/provider-hubspot && npm run build -w @sales-connect/provider-zoho && npm run build -w @sales-connect/server",
+    "build:dashboard": "npm run build -w @sales-connect/dashboard"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
