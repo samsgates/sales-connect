@@ -6,6 +6,8 @@ Sales-Connect gives SaaS products and internal applications a reusable sync laye
 
 > One sync layer. Every CRM.
 
+![Sales-Connect Features](media_resources/features.png)
+
 ## What is included
 
 - `@sales-connect/types` . canonical CRM types and provider contract
@@ -24,6 +26,8 @@ Sales-Connect gives SaaS products and internal applications a reusable sync laye
 - Docker Compose, Kubernetes examples, CI, migrations and production operations docs
 
 ## Core architecture
+
+![Sales-Connect Architecture Diagram](media_resources/architecture_diagram.png)
 
 ```text
 Your application / local data
@@ -46,6 +50,10 @@ Your application / local data
 ```
 
 The framework does not force your application to use Sales-Connect as its primary database. `ApplicationAdapter` can be implemented for your own database/API. The standalone server includes a PostgreSQL-backed reference local record adapter so the project can run immediately.
+
+## How it works
+
+![How Sales-Connect Works](media_resources/howitsworks.png)
 
 ## Quick start
 
